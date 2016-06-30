@@ -18,31 +18,17 @@ CHARSET = "utf-8"       #设置字符集（和PHP交互的字符集）
 
 
 # -------------------------------------------------
-# Oracle数据库连接配置
+# MySQL数据库连接配置
 # -------------------------------------------------
-# import cx_Oracle
-# 数据库字符集
-# os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8' 
-# 数据库连接池
-# pool = cx_Oracle.SessionPool(
-#     user='diaoyf',
-#     password='700327',
-#     dsn='127.0.0.1/xe',
-#     min=5,
-#     max=10,
-#     increment=1,
-#     connectiontype=cx_Oracle.Connection,
-#     threaded=True,
-#     getmode=cx_Oracle.SPOOL_ATTRVAL_NOWAIT,
-#     homogeneous=True)
-
-# def getConn():
-#     """获得数据库连接的公共函数"""
-#     return pool.acquire()
-
-# def closeConn(conn):
-#     """释放数据库连接的公共函数"""
-#     pool.release(conn)
+import mysql.connector
+conn = mysql.connector.connect(user="root",password="1988chenyi@",host="localhost",database="mydbforcy")
+cursor = conn.cursor()
+cursor.execute('select * from ktm_bsw_event')
+result = cursor.fetchall()
+for res in result:
+    print chr(res)
+cursor.close()
+cursor.close()
 
 
 # -------------------------------------------------
